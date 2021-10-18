@@ -5,13 +5,30 @@ date: "10/18/2021"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include=TRUE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 library(plotly)
 library(DT)
 library(tidyverse)
 library(palmerpenguins)
 
 # install.packages ("package_name")
+```
+
+```{r}
+
+# For this particular code chunk you can change the start of the code chunk to `{r, echo = FALSE}` to override any global changes you put in your setup chunk
+penguins_graph <- ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species))
+
+penguins_graph
+```
+
+```{r}
+ggplotly(penguins_graph)
+```
+
+```{r}
+datatable(penguins)
 ```
 
